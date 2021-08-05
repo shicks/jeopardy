@@ -1,0 +1,94 @@
+@import url(//db.onlinewebfonts.com/c/e3e3a81b2544f4508a75573a04e0cafa?family=ITC+Korinna);
+@import url(//db.onlinewebfonts.com/c/510a1daa7bd252a21afb33ac07c831ea?family=Helvetica+Inserat+LT+Std);
+
+.clue,
+.category,
+.placeholder {
+  /*background: #4d786c; double jeopardy? */
+  /*background: #060ce9;*/
+  background: #00008b;
+  display: grid;
+}
+.clue > div,
+.category > div,
+.placeholder > div {
+  margin: auto;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.board {
+  user-select: none;
+  background: black;
+  padding: 10px;
+  width: 800px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 3px;
+  row-gap: 3px;
+}
+.board.clue-mode {
+  position: relative;
+}
+.clue,
+.clue-mode .placeholder.selected .clue {
+  width: 800px;
+  height: 600px;
+  display: grid;
+}
+
+.clue > div,
+.clue-mode .placeholder.selected .clue > div {
+  width: 700px;
+  font-family: "ITC Korinna", serif;
+  font-size: 46pt;
+  filter: drop-shadow(8pt 8pt 4pt black);
+  letter-spacing: 3pt;
+  color: white;
+}
+
+.clue {
+  display: none;
+}
+.clue-mode .placeholder.selected .clue {
+  /*visible: true;*/
+  display: grid;
+  /*transition: 1s ease;*/
+  z-index: 1;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+}
+
+.category,
+.placeholder {
+  width: 130.5px;
+  height: 96px;
+}
+.category > div,
+.placeholder > div {
+  width: 116px;
+}
+
+.category {
+  margin-bottom: 6px;
+}
+
+.category > div {
+  font-family: "Helvetica Inserat LT Std", sans-serif;
+  font-size: 16pt;
+  color: white;
+  filter: drop-shadow(2pt 2pt 1pt black);
+}
+
+.placeholder > div {
+  /*font-family: "ITC Korinna", serif;*/
+  font-family: "Helvetica Inserat LT Std", sans-serif;
+  font-size: 34pt;
+  color: #ecec60;
+  filter: drop-shadow(3pt 3pt 1.5pt black);
+}
