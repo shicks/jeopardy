@@ -19,28 +19,22 @@
 }
 
 .board {
+  padding: 10px;
   user-select: none;
   background: black;
-  padding: 10px;
   width: 800px;
   height: 600px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 3px;
-  row-gap: 3px;
-}
-.board.clue-mode {
   position: relative;
 }
-.clue,
-.clue-mode .placeholder.selected .clue {
+
+.clue {
   width: 800px;
   height: 600px;
-  display: grid;
+  display: none;
+  transition: 1s ease;
 }
 
-.clue > div,
-.clue-mode .placeholder.selected .clue > div {
+.clue > div {
   width: 700px;
   font-family: "ITC Korinna", serif;
   font-size: 46pt;
@@ -49,13 +43,16 @@
   color: white;
 }
 
-.clue {
+.clue-mode .placeholder.selected {
+  display: block;
+}
+.clue-mode .placeholder,
+.clue-mode .category {
   display: none;
 }
-.clue-mode .placeholder.selected .clue {
+.placeholder.selected .clue {
   /*visible: true;*/
   display: grid;
-  /*transition: 1s ease;*/
   z-index: 1;
   position: absolute;
   left: 10px;
@@ -66,12 +63,41 @@
 
 .category,
 .placeholder {
-  width: 130.5px;
-  height: 96px;
+  position: absolute;
+  width: 783px; /*130.5px;*/
+  height: 576px; /*96px;*/
+  transform: scale(0.166);
+  transform-origin: top left;
 }
+
+.category.selected,
+.placeholder.selected {
+  position: absolute;
+  transform: scale(1);
+  left: 10px;
+  top: 10px;
+  transform-origin: center center;
+  z-order: 100;
+}
+
+.r0 { top: 10px; }
+.r1 { top: 120px; }
+.r2 { top: 218px; }
+.r3 { top: 316px; }
+.r4 { top: 414px; }
+.r5 { top: 512px; }
+
+.c0 { left: 10px; }
+.c1 { left: 143.3px; }
+.c2 { left: 276.7px; }
+.c3 { left: 410px; }
+.c4 { left: 543.3px; }
+.c5 { left: 676.7px; }
+
+
 .category > div,
 .placeholder > div {
-  width: 116px;
+  width: 696px; /*116px;*/
 }
 
 .category {
@@ -80,15 +106,15 @@
 
 .category > div {
   font-family: "Helvetica Inserat LT Std", sans-serif;
-  font-size: 16pt;
+  font-size: 96pt;
   color: white;
-  filter: drop-shadow(2pt 2pt 1pt black);
+  filter: drop-shadow(12pt 12pt 6pt black);
 }
 
 .placeholder > div {
   /*font-family: "ITC Korinna", serif;*/
   font-family: "Helvetica Inserat LT Std", sans-serif;
-  font-size: 34pt;
+  font-size: 204pt;
   color: #ecec60;
-  filter: drop-shadow(3pt 3pt 1.5pt black);
+  filter: drop-shadow(18pt 18pt 9pt black);
 }
