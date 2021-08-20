@@ -1,6 +1,48 @@
 @import url(//db.onlinewebfonts.com/c/e3e3a81b2544f4508a75573a04e0cafa?family=ITC+Korinna);
 @import url(//db.onlinewebfonts.com/c/510a1daa7bd252a21afb33ac07c831ea?family=Helvetica+Inserat+LT+Std);
 
+.page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: black;
+}
+
+.scores .score {
+  background: #00008b;
+  color: white;
+  width: 200px;
+  margin: 10px 10px 10px 0;
+  flex-grow: 1;
+  font-family: "Helvetica Inserat LT Std", sans-serif;
+  text-align: center;
+}
+
+.score .border {
+  height: 3px;
+  background: black;
+}
+.scores .score .value {
+  flex-grow: 0;
+  padding: 10px 0;
+  font-size: 30pt;
+  filter: drop-shadow(3pt 3pt 1pt black);
+}
+.value.red {
+  color: #ac0000;
+}
+.scores .score .name {
+  filter: drop-shadow(3pt 3pt 1pt black);
+  padding: 10px 0;
+  font-size: 20pt;
+}
+
 .clue,
 .category,
 .placeholder {
@@ -28,10 +70,10 @@
 }
 
 .clue {
-  width: 800px;
-  height: 600px;
+  /*width: 800px;*/
+  /*height: 600px;*/
   display: none;
-  transition: 1s ease;
+  /*transition: 1s ease;*/
 }
 
 .clue > div {
@@ -74,10 +116,65 @@
 .placeholder.selected {
   position: absolute;
   transform: scale(1);
+  width: 797px; /*130.5px;*/
+  height: 597px; /*96px;*/
   left: 10px;
   top: 10px;
   transform-origin: center center;
   z-order: 100;
+  animation: zoom 0.5s; /* ease-out;*/
+  xanimation: zoom-in-zoom-out 2s ease-out infinite;
+}
+
+.placeholder.selected.daily {
+  animation: zoom-flip 1s linear;
+}
+
+.placeholder > .daily-image {
+  display: none;
+}
+
+.placeholder.daily.selected > .daily-image {
+  z-index: 200;
+  display: block;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder.used .value {
+  display: none;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(0.166);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-flip {
+  0% {
+    transform: scale(0.166);
+  }
+ /* 25% {
+    transform: scale(0.3745) rotateX(90deg);
+  }
+  50% {
+    transform: scale(0.583) rotateX(180deg);
+  }
+  75% {
+    transform: scale(0.7915) rotateX(270deg);
+  }*/
+  100% {
+    transform: scale(1) rotateX(360deg);
+  }
 }
 
 .r0 { top: 10px; }
@@ -116,5 +213,13 @@
   font-family: "Helvetica Inserat LT Std", sans-serif;
   font-size: 204pt;
   color: #ecec60;
+}
+
+.placeholder.selected .value {
+  display: none;
+}
+
+.placeholder .value,
+.placeholder .clue > div  { 
   filter: drop-shadow(18pt 18pt 9pt black);
 }
