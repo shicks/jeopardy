@@ -272,7 +272,7 @@ function initializeBoard(round) {
 }
 
 globalThis.start = () => {
-  initializeBoard(DATA.boards[0].double);
+  initializeBoard(DATA.boards['game'].double);
 }
 
 function div(parent, className, ...children) {
