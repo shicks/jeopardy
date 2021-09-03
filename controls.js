@@ -288,7 +288,7 @@ async function startGame(name) {
   }
 }
 
-globalThis.clueTimer = 4500;
+globalThis.clueTimer = 5000;
 globalThis.responseTimer = 8000;
 
 // Load the game from localstorage
