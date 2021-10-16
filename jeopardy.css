@@ -1,6 +1,11 @@
 @import url(//db.onlinewebfonts.com/c/e3e3a81b2544f4508a75573a04e0cafa?family=ITC+Korinna);
 @import url(//db.onlinewebfonts.com/c/510a1daa7bd252a21afb33ac07c831ea?family=Helvetica+Inserat+LT+Std);
 
+body {
+  background: black;
+  overflow: hidden;
+}
+
 .page {
   display: flex;
   flex-direction: row;
@@ -102,9 +107,9 @@
   display: grid;
   z-index: 1;
   position: absolute;
-  left: 10px;
+  left: 0px;
   right: 10px;
-  top: 10px;
+  top: 0px;
   bottom: 10px;
 }
 
@@ -124,8 +129,8 @@
   transform: scale(1);
   width: 797px; /*130.5px;*/
   height: 597px; /*96px;*/
-  left: 10px;
-  top: 10px;
+  left: 0px;
+  top: 0px;
   transform-origin: center center;
   z-order: 100;
   animation: zoom 0.5s; /* ease-out;*/

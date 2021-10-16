@@ -1,0 +1,25 @@
+<style>
+#config {
+  font-family: monospace;
+  border: 2px solid gray;
+}
+#config.invalid {
+  background: #fbb;
+  border: 2px solid red;
+}
+</style>
+<textarea id="config"></textarea>
+<script type="module">
+const config = document.getElementById('config');
+config.value = localStorage.data;
+config.addEventListener('keyup', () => {
+  try {
+    const json = JSON.parse(config.value);
+    localStorage.data = config.value;
+    config.classList.remove('invalid');
+  } catch (e) {
+    config.classList.add('invalid');
+  }
+});
+
+</script>

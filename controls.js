@@ -12,6 +12,13 @@ const notes = addChild();
 
 clueLine2.textContent = `\xa0`;
 
+const buttonMap = new Map();
+document.body.addEventListener('keydown', (e) => {
+  if (e.target.nodeName === 'INPUT') return;
+  const el = buttonMap.get(e.code);
+  if (el) el.click();
+});
+
 async function startGame(name) {
   w = window.open('/present.html', 'popup', 'width=1050,height=700');
   await new Promise(resolve => w.addEventListener('load', () => resolve()));
@@ -46,7 +53,7 @@ async function startGame(name) {
   addButton(main, 'Start Final Jeopardy', (ctl) => {
     w.clearBoard(data.images.jeopardy, true);
     clearEl(board);
-    addButton(board, 'Show Category', showFinal);
+    addButton(board, 'Show Category', showFinal, 'KeyT');
   });
   let addPlayerButtonCtl;
   addButton(players, 'Add Player', (ctl) => {
@@ -62,8 +69,8 @@ async function startGame(name) {
     w.updatePlayer(currentPlayer, playersList[currentPlayer][1] += Number(input.value));
     postAddMoneyAction();
     inControl = currentPlayer;
-  });
-  addButton(player, '-', playerSubtract);
+  }, 'KeyY');
+  addButton(player, '-', playerSubtract, 'KeyN');
   function playerSubtract() {
     if (currentPlayer < 0) return;
     w.updatePlayer(currentPlayer, playersList[currentPlayer][1] -= Number(input.value));
@@ -86,7 +93,7 @@ async function startGame(name) {
     const index = playersList.length;
     const name = input.value || `Player ${index + 1}`;
     playersList.push([name, 0]);
-    addButton(players, name, () => selectPlayer(index));
+    addButton(players, name, () => selectPlayer(index), `Digit${index + 1}`);
     w.addPlayer(name);
   }
 
@@ -143,7 +150,7 @@ async function startGame(name) {
         }
       }
       ctl.replace(`Reveal Category 1`, revealCat);
-    });
+    }, 'KeyT');
   }
 
   let categoryCount;
@@ -176,7 +183,7 @@ async function startGame(name) {
         w.hideDaily(c, r);
         ctl2.delete();
         showClue(...currentClue);
-      });
+      }, 'KeyT');
     } else {
       showClue(...currentClue);
     }
@@ -186,12 +193,12 @@ async function startGame(name) {
     // If daily double...
     clearEl(clueLine);
     clearEl(clueLine2);
-    const b = addButton(clueLine, 'Hide Clue', hideClue);
+    const b = addButton(clueLine, 'Hide Clue', hideClue, 'KeyH');
     clueLine2.textContent = clue.clue;
     const timer = newTimer(
         clueLine2,
         clue.daily ? globalThis.responseTimer : globalThis.clueTimer,
-        hideClue);
+        hideClue, 'KeyT');
     addChild('span', clueLine2).textContent = clue.response;
     let playerTimer;
     if (clue.daily) {
@@ -207,9 +214,8 @@ async function startGame(name) {
         timer.pauseTimer();
         if (playerTimer) playerTimer.delete();
         playerTimer = newTimer(player, responseTimer, () => {
-          
           timer.startTimer();
-        });
+        }, 'KeyP');
         playerTimer.startTimer();
       };
     }
@@ -229,7 +235,7 @@ async function startGame(name) {
     // Start timer
   }
 
-  function newTimer(parent, init, timeUp) {
+  function newTimer(parent, init, timeUp, key) {
     let timerStart;
     let timerAction = startTimer;
     let timeRemaining = init;
@@ -263,7 +269,7 @@ async function startGame(name) {
         tb.textContent = String(timeRemaining / 1000);
       }
     }
-    const tb = addButton(parent, 'Start Timer', () => timerAction());
+    const tb = addButton(parent, 'Start Timer', () => timerAction(), key);
     tb.style.width = '120px';
     return {startTimer, pauseTimer, updateTimer, delete() { tb.remove(); },
             get running() { return running; }};
@@ -304,7 +310,7 @@ if (!hash.startsWith('#')) {
 }
 
 
-function addButton(div, text, action) {
+function addButton(div, text, action, code) {
   const button = document.createElement('button');
   button.textContent = text;
   const ctl = {
@@ -318,6 +324,7 @@ function addButton(div, text, action) {
   };
   button.addEventListener('click', () => action(ctl));
   div.appendChild(button);
+  if (code) buttonMap.set(code, button);
   return button;
 }
 function addBreak(parent) {
