@@ -20,7 +20,7 @@ document.body.addEventListener('keydown', (e) => {
 });
 
 async function startGame(name) {
-  w = window.open('/present.html', 'popup', 'width=1050,height=700');
+  w = window.open('present.html', 'popup', 'width=1050,height=700');
   await new Promise(resolve => w.addEventListener('load', () => resolve()));
   const data = JSON.parse(localStorage['data']);
   const game = data['boards'][name];
