@@ -1,5 +1,30 @@
-@import url(https://db.onlinewebfonts.com/c/e3e3a81b2544f4508a75573a04e0cafa?family=ITC+Korinna);
-@import url(https://db.onlinewebfonts.com/c/510a1daa7bd252a21afb33ac07c831ea?family=Helvetica+Inserat+LT+Std);
+/*@import url(https://db.onlinewebfonts.com/c/e3e3a81b2544f4508a75573a04e0cafa?family=ITC+Korinna);
+@import url(https://db.onlinewebfonts.com/c/510a1daa7bd252a21afb33ac07c831ea?family=Helvetica+Inserat+LT+Std);*/
+
+/*
+      www.OnlineWebFonts.Com 
+      You must credit the author Copy this link on your web 
+      <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div>
+      OR
+      <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>
+*/
+@font-face {font-family: "Helvetica Inserat LT Std";
+    src: url("//db.onlinewebfonts.com/t/510a1daa7bd252a21afb33ac07c831ea.eot"); /* IE9*/
+    src: url("//db.onlinewebfonts.com/t/510a1daa7bd252a21afb33ac07c831ea.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("//db.onlinewebfonts.com/t/510a1daa7bd252a21afb33ac07c831ea.woff2") format("woff2"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/510a1daa7bd252a21afb33ac07c831ea.woff") format("woff"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/510a1daa7bd252a21afb33ac07c831ea.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("//db.onlinewebfonts.com/t/510a1daa7bd252a21afb33ac07c831ea.svg#Helvetica Inserat LT Std") format("svg"); /* iOS 4.1- */
+}
+@font-face {font-family: "ITC Korinna";
+    src: url("//db.onlinewebfonts.com/t/e3e3a81b2544f4508a75573a04e0cafa.eot"); /* IE9*/
+    src: url("//db.onlinewebfonts.com/t/e3e3a81b2544f4508a75573a04e0cafa.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("//db.onlinewebfonts.com/t/e3e3a81b2544f4508a75573a04e0cafa.woff2") format("woff2"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/e3e3a81b2544f4508a75573a04e0cafa.woff") format("woff"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/e3e3a81b2544f4508a75573a04e0cafa.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("//db.onlinewebfonts.com/t/e3e3a81b2544f4508a75573a04e0cafa.svg#ITC Korinna") format("svg"); /* iOS 4.1- */
+}
+
 
 body {
   background: black;
